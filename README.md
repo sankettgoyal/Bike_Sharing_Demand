@@ -1,77 +1,91 @@
 # 🚲 Bike Sharing Demand Prediction
 
-This project aims to develop a machine learning model to predict bike rental counts based on various temporal and environmental factors. By analyzing rental data, the model assists in forecasting demand, thereby optimizing bike-sharing operations.
+This project focuses on building a machine learning model to forecast bike rental demand based on various features like date, weather conditions, and time. It uses historical bike-sharing data to help optimize resource planning for such services.
+
+---
+
+## 📦 Installation
+
+You can install the dependencies directly using the `setup.py` script:
+
+```bash
+git clone https://github.com/sankettgoyal/Bike_Sharing_Demand.git
+cd Bike_Sharing_Demand
+pip install .
+```
+
+Alternatively, use the traditional method:
+
+```bash
+pip install -r requirements.txt
+```
 
 ---
 
 ## 📁 Project Structure
 
 ```
-├── Bike Sharing Demand.py    # Main script for data processing and model training
-├── README.md                 # Project documentation
-├── requirements.txt          # List of required Python packages
+├── Bike Sharing Demand.py     # Main notebook/script for training and evaluation
+├── requirements.txt           # Required packages
+├── setup.py                   # Project installation script
+├── README.md                  # Project documentation
 ```
 
 ---
 
-## 📊 Dataset Overview
+## 📊 Dataset Description
 
-The dataset used in this project includes features such as:
+The dataset includes both **daily** and **hourly** bike rental records with the following features:
 
-- **Date**: Specific day of the rental
-- **Season**: Categorical variable indicating the season (e.g., Spring, Summer)
-- **Weather Situation**: Categorical variable describing weather conditions (e.g., Clear, Mist, Rain)
-- **Temperature**: Normalized temperature in Celsius
-- **Humidity**: Normalized humidity percentage
-- **Windspeed**: Normalized wind speed
-- **Casual Users**: Count of casual (non-registered) users
-- **Registered Users**: Count of registered users
-- **Total Count**: Total number of bike rentals (sum of casual and registered users)
+- `season`, `yr`, `mnth`, `hr`, `holiday`, `weekday`, `workingday`
+- Weather: `weathersit`, `temp`, `atemp`, `hum`, `windspeed`
+- Target columns: `casual`, `registered`, `cnt` (total count of rentals)
 
 ---
 
-## ⚙️ Installation & Setup
+## 🧠 Model Development
 
-### ✅ Prerequisites
+The following machine learning models were tested:
 
-- Python 3.7 or higher
+- Linear Regression  
+- Random Forest  
+- Extra Trees Regressor  
+- LightGBM  
+- XGBoost ✅ *(Best performing model)*
 
-### 🛠️ Steps to Run Locally
-
-1. **Clone the Repository**
-   ```bash
-   git clone https://github.com/sankettgoyal/Bike_Sharing_Demand.git
-   cd Bike_Sharing_Demand
-   ```
-
-2. **Install Dependencies**
-   ```bash
-   pip install -r requirements.txt
-   ```
-
-3. **Run the Main Script**
-   ```bash
-   python "Bike Sharing Demand.py"
-   ```
+### ✅ Final Model:
+**XGBoost** was chosen for its superior performance across evaluation metrics like MAE, RMSE, and R².
 
 ---
 
-## 📈 Model Building & Evaluation
+## ⚙️ How to Run
 
-The project involves:
+After installation, you can run the training and prediction pipeline with:
 
-- **Data Preprocessing**: Handling missing values, encoding categorical variables, and feature scaling.
-- **Model Training**: Implementing machine learning algorithms to predict bike rental counts.
-- **Evaluation**: Assessing model performance using metrics such as Mean Absolute Error (MAE), Root Mean Squared Error (RMSE), and R² Score.
+```bash
+python "Bike Sharing Demand.py"
+```
 
 ---
 
-## 📌 Results
+## 📈 Results
 
-The model provides insights into factors affecting bike rental demand and achieves satisfactory performance in predicting rental counts. These predictions can aid in decision-making for bike-sharing services, such as fleet management and resource allocation.
+The model effectively predicts bike rental counts and provides actionable insights for operational planning. Predictions were evaluated using:
+
+- 📉 Mean Absolute Error (MAE)
+- 📉 Root Mean Squared Error (RMSE)
+- 📈 R² Score
 
 ---
 
 ## ✅ Conclusion
 
-This project demonstrates the application of machine learning techniques to forecast bike-sharing demand using temporal and environmental data. The insights gained can help optimize operations and improve user satisfaction in bike-sharing systems.
+This project showcases the power of machine learning for solving real-world forecasting problems. With proper preprocessing and model tuning, we achieved a reliable demand prediction system for bike sharing.
+
+---
+
+## 🛠️ Technologies Used
+
+**Languages & Tools:** Python, Jupyter Notebook  
+**Libraries:** NumPy, Pandas, Matplotlib, Scikit-learn, XGBoost, LightGBM  
+**Utilities:** pip, setuptools, VS Code, Git
